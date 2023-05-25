@@ -1,0 +1,3 @@
+name: EmeraldRanking
+version: '${project.version}'
+main: me.bluedyaishela.emeraldranking.EmeraldRanking
