@@ -1,3 +1,7 @@
 name: EmeraldRanking
 version: '${project.version}'
 main: me.bluedyaishela.emeraldranking.EmeraldRanking
+commands:
+  emeraldranking:
+    description: None
+    permission: emeraldranking.use

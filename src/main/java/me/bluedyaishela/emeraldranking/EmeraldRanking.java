@@ -6,12 +6,20 @@ public final class EmeraldRanking extends JavaPlugin {
 
     @Override
     public void onEnable() {
-        // Plugin startup logic
+        this.load();
+    }
 
+    public void load() {
+        this.useCommands();
+    }
+
+    public void useCommands() {
+        Commands commands = new Commands();
+        this.getCommand("emeraldranking").setExecutor(commands);
+        this.getCommand("emeraldranking").setTabCompleter(commands);
     }
 
     @Override
     public void onDisable() {
-        // Plugin shutdown logic
     }
 }
