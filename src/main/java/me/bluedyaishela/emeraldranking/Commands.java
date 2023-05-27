@@ -31,6 +31,10 @@ public class Commands implements CommandExecutor, TabCompleter {
                 sender.sendMessage("Message d'aide");
                 return true;
             }
+            if(subCommand.equalsIgnoreCase("add")) {
+                sender.sendMessage("");
+                return true;
+            }
         }
 
         return false;
@@ -38,16 +42,17 @@ public class Commands implements CommandExecutor, TabCompleter {
 
     @Override
     public List<String> onTabComplete(CommandSender sender, Command cmd, String label, String[] args) {
-        if (args.length == 1) {
-            List<String> availableCommands = Arrays.asList("help", "add", "addall", "leaderboard");
-            return this.getArgsComplete(args, availableCommands, 0);
-        }
-        if (args.length == 2) {
-            // Actuellement en exemple à remplacer
-            List<String> availableCommands = Arrays.asList("value", "none");
-            return this.getArgsComplete(args, availableCommands, 1);
-        }
 
+        List<String> availableCommands = new ArrayList<>();
+
+        switch (args.length) {
+            case 1:
+                availableCommands.addAll(Arrays.asList("help", "add", "addall", "leaderboard"));
+                return this.getArgsComplete(args, availableCommands, 0);
+            case 2:
+                availableCommands.addAll(Arrays.asList("value", "none"));
+                return this.getArgsComplete(args, availableCommands, 1);
+        }
         return null;
     }
 
