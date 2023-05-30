@@ -18,17 +18,17 @@ public class ConfigLoader {
 
    private void loadFiles() {
        File configFile = new File(plugin.getDataFolder(), "config.yml");
-       File dataFile = new File(plugin.getDataFolder(), "data.yml");
+//       File dataFile = new File(plugin.getDataFolder(), "data.json");
 
        if(!configFile.exists())
        {
            plugin.saveDefaultConfig();
        }
 
-       if(!dataFile.exists())
-       {
-           plugin.saveResource("data.yml", true);
-       }
+//       if(!dataFile.exists())
+//       {
+//           plugin.saveResource("data.json", true);
+//       }
 
        this.config = plugin.getConfig();
    }

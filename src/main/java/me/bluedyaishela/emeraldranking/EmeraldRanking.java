@@ -19,7 +19,7 @@ public final class EmeraldRanking extends JavaPlugin {
     }
 
     private void useCommands() {
-        Commands commands = new Commands();
+        Commands commands = new Commands(this);
         this.getCommand("emeraldranking").setExecutor(commands);
         this.getCommand("emeraldranking").setTabCompleter(commands);
     }
