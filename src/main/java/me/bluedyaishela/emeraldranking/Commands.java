@@ -1,5 +1,6 @@
 package me.bluedyaishela.emeraldranking;
 
+import me.bluedyaishela.emeraldranking.commands.CommandFunctionManager;
 import me.bluedyaishela.emeraldranking.commands.CommandResponseManager;
 import me.bluedyaishela.emeraldranking.utils.TypeChecker;
 import org.bukkit.command.Command;
@@ -15,6 +16,8 @@ import java.util.List;
 public class Commands implements CommandExecutor, TabCompleter {
 
     private EmeraldRanking plugin;
+    private CommandFunctionManager cmdFunction;
+    private CommandResponseManager cmdResponse;
     public Commands(EmeraldRanking plugin) {
         this.plugin = plugin;
     }
@@ -24,7 +27,7 @@ public class Commands implements CommandExecutor, TabCompleter {
 
         if (args.length == 0)
         {
-            sender.sendMessage(CommandResponseManager.getEmeraldRanking());
+            sender.sendMessage(cmdResponse.getEmeraldRanking());
             return true;
         }
 
@@ -33,40 +36,20 @@ public class Commands implements CommandExecutor, TabCompleter {
             return false;
         }
 
-        if (args.length == 1) {
-            String subCommand = args[0];
-            switch (subCommand.toLowerCase()) {
-                case "help":
-                    sender.sendMessage("Message d'aide");
-                    return true;
-                case "add":
-                    sender.sendMessage("Merci de spécifier une valeur d'émeraudes à ajouter");
-                    return true;
-                case "default":
-                    break;
-            }
+        String subCommand = args[0];
+        switch (subCommand.toLowerCase()) {
+            case "help":
+                cmdFunction.helpCommand(sender);
+                return true;
+            case "add":
+                return cmdFunction.addCommand(sender, args);
+            case "addall":
+
+            case "default":
+                break;
         }
 
-        if (args.length == 2) {
-            String firstArg = args[0];
-            String secondArg = args[1];
-
-            switch (firstArg.toLowerCase()) {
-                case "add":
-                    if (TypeChecker.isInteger(secondArg))
-                    {
-                        int intArg = Integer.parseInt(secondArg);
-                        // Code permettant l'ajout des émeraudes
-                        sender.sendMessage("Vos " + intArg + " émeraudes ont été ajoutées à votre classement");
-                        return true;
-                    }
-                    return false;
-                case "default":
-                    return false;
-            }
-        }
-
-        sender.sendMessage("Cette commande n'existe pas");
+        sender.sendMessage(cmdResponse.getNoExist());
         return false;
     }
 

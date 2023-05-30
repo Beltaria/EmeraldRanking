@@ -2,18 +2,21 @@ package me.bluedyaishela.emeraldranking.commands;
 
 public class CommandResponseManager {
     private static final String pluginName = "§7[§aEmeraldRanking§7] §7» ";
-    private static final String emeraldRanking = pluginName + "§rVous utilisez actuellement EmeraldRanking, " +
-            "pour lister les commandes : §e/emeraldranking help";
-
-    private static final String invalid = pluginName + "§cCette commande est invalide.";
-    private static  final String adminPerm = pluginName + "§cVous ne disposez pas des permissions nécessaires " +
-            "pour effectuer cette commande.";
-
-    public static String getEmeraldRanking() {
-        return emeraldRanking;
+    public String getEmeraldRanking() {
+        return pluginName + "§rVous utilisez actuellement EmeraldRanking, " +
+                "pour lister les commandes : §e/emeraldranking help";
     }
 
-    public static String getInvalid() {
-        return invalid;
+    public String getInvalid() {
+        return  pluginName + "§cCette commande est invalide.";
+    }
+
+    public String getAdminPerm() {
+        return pluginName + "§cVous ne disposez pas des permissions nécessaires " +
+                "pour effectuer cette commande.";
+    }
+
+    public String getNoExist() {
+        return pluginName + "§cCette commande n'existe pas.";
     }
 }
