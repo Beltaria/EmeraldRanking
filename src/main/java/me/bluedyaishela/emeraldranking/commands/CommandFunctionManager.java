@@ -1,9 +1,11 @@
 package me.bluedyaishela.emeraldranking.commands;
 
+import me.bluedyaishela.emeraldranking.utils.CommandUtils;
 import me.bluedyaishela.emeraldranking.utils.TypeChecker;
 import org.bukkit.command.CommandSender;
 
 public class CommandFunctionManager {
+    private final CommandUtils commandUtils = new CommandUtils();
     public void helpCommand(CommandSender sender) {
         sender.sendMessage("Message d'aide");
     }
@@ -18,7 +20,16 @@ public class CommandFunctionManager {
                 if (TypeChecker.isInteger(argument))
                 {
                     int intArg = Integer.parseInt(argument);
+                    int emeraldCount = commandUtils.getEmeraldCount(sender);
+
+                    if (intArg > emeraldCount) {
+                        sender.sendMessage("Vous ne possédez pas assez d'émeraudes ! En votre possession : " + emeraldCount);
+                        return false;
+                    }
+
                     // Code permettant l'ajout des émeraudes
+
+
                     sender.sendMessage("Vos " + intArg + " émeraudes ont été ajoutées à votre classement");
                     return true;
                 }
@@ -30,7 +41,10 @@ public class CommandFunctionManager {
 
     public boolean addAllCommand(CommandSender sender, String[] args) {
         // Récupérer le nom d'émeraudes dans l'inventaire du joueur & ajouter
-        sender.sendMessage("Toutes vos émeraudes ont été ajoutées au classement.");
+       int emeraldCount = commandUtils.getEmeraldCount(sender);
+
+        // Affiche également le nouveau montant
+        sender.sendMessage("Toutes vos émeraudes ont été ajoutées au classement." + emeraldCount);
         return false;
     }
 
