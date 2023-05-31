@@ -18,17 +18,17 @@ public class ConfigLoader {
 
    private void loadFiles() {
        File configFile = new File(plugin.getDataFolder(), "config.yml");
-//       File dataFile = new File(plugin.getDataFolder(), "data.json");
+       File langFile = new File(plugin.getDataFolder(), "lang/messages_fr.yml");
 
        if(!configFile.exists())
        {
            plugin.saveDefaultConfig();
        }
 
-//       if(!dataFile.exists())
-//       {
-//           plugin.saveResource("data.json", true);
-//       }
+       if(!langFile.exists())
+       {
+           plugin.saveResource("lang/messages_fr.yml", true);
+       }
 
        this.config = plugin.getConfig();
    }
