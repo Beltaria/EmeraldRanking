@@ -3,11 +3,14 @@ package me.bluedyaishela.emeraldranking;
 import me.bluedyaishela.emeraldranking.commands.CommandFunctionManager;
 import me.bluedyaishela.emeraldranking.commands.CommandResponseManager;
 import me.bluedyaishela.emeraldranking.utils.TypeChecker;
+import org.bukkit.Bukkit;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
 import org.bukkit.command.TabCompleter;
 import org.bukkit.entity.Player;
+import org.bukkit.plugin.Plugin;
+import org.bukkit.plugin.PluginManager;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -46,6 +49,8 @@ public class Commands implements CommandExecutor, TabCompleter {
 
         String subCommand = args[0];
         switch (subCommand.toLowerCase()) {
+            case "reload":
+                return cmdFunction.reloadCommand(sender);
             case "help":
                 cmdFunction.helpCommand(sender);
                 return true;
