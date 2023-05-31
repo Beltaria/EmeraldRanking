@@ -22,6 +22,7 @@ public class CommandFunctionManager {
                     sender.sendMessage("Vos " + intArg + " émeraudes ont été ajoutées à votre classement");
                     return true;
                 }
+                sender.sendMessage("Entrez un entier : /emeraldranking add {valeur}");
                 return true;
         }
         return false;

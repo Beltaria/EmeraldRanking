@@ -16,14 +16,15 @@ import java.util.List;
 public class Commands implements CommandExecutor, TabCompleter {
 
     private EmeraldRanking plugin;
-    private CommandFunctionManager cmdFunction;
-    private CommandResponseManager cmdResponse;
     public Commands(EmeraldRanking plugin) {
         this.plugin = plugin;
     }
 
     @Override
     public boolean onCommand(CommandSender sender, Command cmd, String label, String[] args) {
+
+        CommandFunctionManager cmdFunction = new CommandFunctionManager();
+        CommandResponseManager cmdResponse = new CommandResponseManager();
 
         if (args.length == 0)
         {
