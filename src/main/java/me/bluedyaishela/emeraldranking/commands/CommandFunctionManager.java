@@ -27,4 +27,29 @@ public class CommandFunctionManager {
         }
         return false;
     }
+
+    public boolean addAllCommand(CommandSender sender, String[] args) {
+        // Récupérer le nom d'émeraudes dans l'inventaire du joueur & ajouter
+        sender.sendMessage("Toutes vos émeraudes ont été ajoutées au classement.");
+        return false;
+    }
+
+    public boolean showCommand(CommandSender sender, String[] args) {
+        // Affiche au joueur concerné en fonction des arguments
+        switch (args.length) {
+            case 1:
+                sender.sendMessage("Vous avez X émeraudes.");
+                return true;
+            case 2:
+                sender.sendMessage("Le joueur X possède X émeraudes et est classé Xème.");
+                return true;
+        }
+        return false;
+    }
+
+    public boolean leaderboardCommand(CommandSender sender, String[] args) {
+        // Affiche le classement des joueurs
+        sender.sendMessage("Classement top joueurs :");
+        return false;
+    }
 }

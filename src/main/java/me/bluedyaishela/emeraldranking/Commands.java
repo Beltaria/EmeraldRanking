@@ -36,6 +36,13 @@ public class Commands implements CommandExecutor, TabCompleter {
         {
             return false;
         }
+        /*
+            - add {value} # Paramètre obligatoire
+            - show {player} # Si pas de paramètres alors soi-même
+            - leaderboard # Classement des joueurs ayant le plus d'émeraudes
+            - addall # Ajoute toutes les émeraudes disponibles dans l'inventaire
+            - help # Affiche le menu d'aide des commandes et plugin
+         */
 
         String subCommand = args[0];
         switch (subCommand.toLowerCase()) {
@@ -45,7 +52,11 @@ public class Commands implements CommandExecutor, TabCompleter {
             case "add":
                 return cmdFunction.addCommand(sender, args);
             case "addall":
-
+                return cmdFunction.addAllCommand(sender, args);
+            case "show":
+                return cmdFunction.showCommand(sender, args);
+            case "leaderboard":
+                return cmdFunction.leaderboardCommand(sender, args);
             case "default":
                 break;
         }
@@ -61,10 +72,10 @@ public class Commands implements CommandExecutor, TabCompleter {
 
         switch (args.length) {
             case 1:
-                availableCommands.addAll(Arrays.asList("help", "add", "addall", "leaderboard"));
+                availableCommands.addAll(Arrays.asList("help", "add", "addall", "leaderboard", "show"));
                 return this.getArgsComplete(args, availableCommands, 0);
             case 2:
-                availableCommands.addAll(Arrays.asList("value", "none"));
+                availableCommands.addAll(Arrays.asList("value", "player"));
                 return this.getArgsComplete(args, availableCommands, 1);
         }
         return null;
