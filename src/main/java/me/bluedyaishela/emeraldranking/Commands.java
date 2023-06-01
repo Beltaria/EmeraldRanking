@@ -49,6 +49,10 @@ public class Commands implements CommandExecutor, TabCompleter {
 
         String subCommand = args[0];
         switch (subCommand.toLowerCase()) {
+            case "test":
+                ConfigLoader configLoader = new ConfigLoader(plugin);
+                sender.sendMessage(plugin.getConfig().getString("lang_file"));
+                return true;
             case "reload":
                 return cmdFunction.reloadCommand(sender);
             case "help":
